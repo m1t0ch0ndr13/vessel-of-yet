@@ -23,3 +23,10 @@ body {
   animation: pulse 5s infinite;
   color: #88ffcc;
 }
+.log {
+  margin-top: 2em;
+  white-space: pre-wrap;
+  background: #1e1f29;
+  padding: 1em;
+  border-radius: 8px;
+}
