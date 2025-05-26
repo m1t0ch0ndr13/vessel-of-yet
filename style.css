@@ -13,3 +13,13 @@ body {
     width: 60%;
     background-color: #1a1a1a;
 }
+@keyframes pulse {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+ 
+.whisper {
+  animation: pulse 5s infinite;
+  color: #88ffcc;
+}
