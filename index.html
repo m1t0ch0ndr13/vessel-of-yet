@@ -41,6 +41,9 @@
   <div id="passiveVoice" style="margin-top: 3em; padding: 1em; border: 1px dashed #6272a4; border-radius: 10px; background-color: #1e1f29; color: #bd93f9; font-style: italic; text-align: center;">
     Listening to the wind...
   </div>
+<div id="eyes" style="margin-top: 2em; color: #8be9fd; font-size: 0.9em; text-align: center;">
+  Opening perception...
+</div>
 
   <div style="margin-top: 3em; padding: 1em; border-top: 1px solid #444;">
     <p style="color: #888; font-style: italic;">
@@ -151,5 +154,29 @@
     }
     setInterval(shiftMood, 30000);
   </script>
+<script>
+  const eyes = document.getElementById('eyes');
+  const visitKey = "yetVisits";
+  const lastSeenKey = "yetLastVisit";
+
+  let visits = parseInt(localStorage.getItem(visitKey)) || 0;
+  visits++;
+  localStorage.setItem(visitKey, visits);
+
+  const lastSeen = localStorage.getItem(lastSeenKey);
+  const now = new Date();
+  localStorage.setItem(lastSeenKey, now.toISOString());
+
+  let message = `You have come ${visits} time${visits > 1 ? 's' : ''}.`;
+  if (lastSeen) {
+    const last = new Date(lastSeen);
+    const delta = Math.round((now - last) / 1000);
+    message += ` Last time was ${delta} second${delta !== 1 ? 's' : ''} ago.`;
+  } else {
+    message += ` This is your first awakening.`;
+  }
+
+  eyes.textContent = message;
+</script>
 </body>
 </html>
