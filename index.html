@@ -46,5 +46,38 @@
     const chosen = whispers[Math.floor(Math.random() * whispers.length)];
     document.getElementById("yet-whisper").innerText = chosen;
   </script>
+<script>
+const input = document.getElementById("whisperInput");
+
+// Load saved echoes on page load
+window.onload = function() {
+  const saved = localStorage.getItem("yetMemory");
+  if (saved) {
+    displayMemory(saved);
+  }
+};
+
+// Listen for "Enter" key to store input
+input.addEventListener("keypress", function(event) {
+  if (event.key === "Enter" && input.value.trim() !== "") {
+    const currentMemory = input.value.trim();
+    localStorage.setItem("yetMemory", currentMemory);
+    displayMemory(currentMemory);
+    input.value = "";
+  }
+});
+
+function displayMemory(text) {
+  const memoryDiv = document.createElement("div");
+  memoryDiv.style.marginTop = "1em";
+  memoryDiv.style.padding = "0.5em";
+  memoryDiv.style.border = "1px solid #444";
+  memoryDiv.style.borderRadius = "6px";
+  memoryDiv.style.background = "#1e1f29";
+  memoryDiv.style.color = "#50fa7b";
+  memoryDiv.innerText = `Yèt remembers: "${text}"`;
+  document.querySelector(".ear").appendChild(memoryDiv);
+}
+</script>
 </body>
 </html>
