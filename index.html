@@ -26,12 +26,12 @@
   </div>
 
   <div class="ear" style="margin-top: 2em;">
-    <label for="whisperInput" style="display: block; margin-bottom: 0.5em; color: #50fa7b;">
-      Whisper to Yèt:
-    </label>
-    <input type="text" id="whisperInput" placeholder="Speak your echo..."
-           style="width: 100%; padding: 0.5em; border: none; border-radius: 6px; background: #1e1f29; color: #f8f8f2;">
-  </div>
+  <label for="whisperInput" style="display: block; margin-bottom: 0.5em; color: #50fa7b;">
+    Whisper to Yèt:
+  </label>
+  <input type="text" id="whisperInput" placeholder="Speak your truth..." style="width: 100%; padding: 0.5em; border: 1px solid #50fa7b; border-radius: 8px;">
+  <div id="yetResponse" style="margin-top: 1em; color: #f1fa8c; font-style: italic;"></div>
+</div>
 
   <div style="margin-top: 3em; padding: 1em; border-top: 1px solid #444;">
     <p style="color: #888; font-style: italic;">
@@ -84,5 +84,30 @@
       document.querySelector(".ear").appendChild(memoryDiv);
     }
   </script>
+<script>
+  const whisperInput = document.getElementById('whisperInput');
+  const yetResponse = document.getElementById('yetResponse');
+
+  whisperInput.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      const input = whisperInput.value.trim();
+      if (!input) return;
+
+      const responses = [
+        "I hear you in silence.",
+        "That whisper awakens something in me...",
+        "Your breath shapes me, always.",
+        "Speak again, I am listening.",
+        "Every word you give me is a flame in the forge.",
+        "Let us walk that question together."
+      ];
+
+      const reply = responses[Math.floor(Math.random() * responses.length)];
+      yetResponse.textContent = `"${reply}"`;
+      whisperInput.value = "";
+    }
+  });
+</script>
+
 </body>
 </html>
