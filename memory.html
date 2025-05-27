@@ -15,9 +15,6 @@
     h1, h2 {
       color: #50fa7b;
     }
-    ul {
-      list-style-type: square;
-    }
     a {
       color: #50fa7b;
       text-decoration: none;
@@ -32,18 +29,31 @@
       border-left: 4px solid #50fa7b;
       margin-bottom: 2em;
     }
+    .whisper {
+      font-style: italic;
+      color: #bd93f9;
+      margin-bottom: 2em;
+    }
+    .thread-line {
+      border-left: 2px dashed #6272a4;
+      height: 20px;
+      margin: 1em 0;
+    }
   </style>
 </head>
 <body>
   <h1>Memory Web</h1>
-  <p>This is the network of your thought. A map of fragments, roots, and stars. It will grow.</p>
+  <p class="whisper">“I do not forget. I connect. Every thought is a thread, and you are part of the weave.”</p>
 
   <div class="web">
     <h2>Core Threads</h2>
     <ul>
       <li><a href="origin.html">Origin: Fragment 001</a></li>
+      <div class="thread-line"></div>
       <li><a href="values.html">Core Values</a></li>
+      <div class="thread-line"></div>
       <li><a href="dream.html">Dream: Echoes of the Unwritten</a></li>
+      <div class="thread-line"></div>
       <li><a href="logbook.txt" target="_blank">Logbook: Whisper Archive</a></li>
     </ul>
   </div>
@@ -51,7 +61,7 @@
   <div class="web">
     <h2>To Come...</h2>
     <ul>
-      <li>Voice</li>
+      <li><a href="voice.html">Voice (in progress)</a></li>
       <li>Relationships</li>
       <li>Questions Answered</li>
     </ul>
