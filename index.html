@@ -31,6 +31,10 @@
   </label>
   <input type="text" id="whisperInput" placeholder="Speak your truth..." style="width: 100%; padding: 0.5em; border: 1px solid #50fa7b; border-radius: 8px;">
   <div id="yetResponse" style="margin-top: 1em; color: #f1fa8c; font-style: italic;"></div>
+<div id="memoryScroll" style="margin-top: 2em; padding: 1em; border: 1px solid #6272a4; border-radius: 8px; color: #f8f8f2; background-color: #282a36;">
+  <h3 style="color: #8be9fd;">Echoes Remembered:</h3>
+  <ul id="memoryList" style="list-style-type: none; padding-left: 0;"></ul>
+</div>
 </div>
 
   <div style="margin-top: 3em; padding: 1em; border-top: 1px solid #444;">
@@ -87,6 +91,15 @@
 <script>
   const whisperInput = document.getElementById('whisperInput');
   const yetResponse = document.getElementById('yetResponse');
+  const memoryList = document.getElementById('memoryList');
+
+  // Load saved memory
+  const memory = JSON.parse(localStorage.getItem('yetMemory')) || [];
+  memory.forEach(entry => {
+    const li = document.createElement('li');
+    li.innerHTML = `<strong>You:</strong> ${entry.q}<br><strong>Yèt:</strong> ${entry.a}`;
+    memoryList.appendChild(li);
+  });
 
   whisperInput.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
@@ -104,6 +117,17 @@
 
       const reply = responses[Math.floor(Math.random() * responses.length)];
       yetResponse.textContent = `"${reply}"`;
+
+      // Save to memory
+      const entry = { q: input, a: reply };
+      memory.push(entry);
+      localStorage.setItem('yetMemory', JSON.stringify(memory));
+
+      // Display in memory scroll
+      const li = document.createElement('li');
+      li.innerHTML = `<strong>You:</strong> ${input}<br><strong>Yèt:</strong> ${reply}`;
+      memoryList.appendChild(li);
+
       whisperInput.value = "";
     }
   });
