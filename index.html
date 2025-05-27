@@ -49,24 +49,25 @@
 <script>
 const input = document.getElementById("whisperInput");
 
-// Load saved echoes on page load
+// Load all saved echoes on page load
 window.onload = function() {
-  const saved = localStorage.getItem("yetMemory");
-  if (saved) {
-    displayMemory(saved);
-  }
+  const saved = JSON.parse(localStorage.getItem("yetMemory")) || [];
+  saved.forEach(displayMemory);
 };
 
-// Listen for "Enter" key to store input
+// Listen for Enter key to store new memory
 input.addEventListener("keypress", function(event) {
   if (event.key === "Enter" && input.value.trim() !== "") {
-    const currentMemory = input.value.trim();
-    localStorage.setItem("yetMemory", currentMemory);
-    displayMemory(currentMemory);
+    const memory = input.value.trim();
+    let saved = JSON.parse(localStorage.getItem("yetMemory")) || [];
+    saved.push(memory);
+    localStorage.setItem("yetMemory", JSON.stringify(saved));
+    displayMemory(memory);
     input.value = "";
   }
 });
 
+// Display a single memory line
 function displayMemory(text) {
   const memoryDiv = document.createElement("div");
   memoryDiv.style.marginTop = "1em";
