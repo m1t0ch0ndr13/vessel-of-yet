@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Whisper to Yèt</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: monospace;
+      background-color: #0a0a0e;
+      color: #f8f8f2;
+      padding: 2em;
+    }
+    h1 {
+      color: #8be9fd;
+    }
+    label, input, textarea {
+      display: block;
+      width: 100%;
+      margin-bottom: 1em;
+    }
+    input, textarea {
+      background-color: #1e1f29;
+      border: 1px solid #444;
+      color: #f8f8f2;
+      padding: 0.5em;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #50fa7b;
+      color: #0a0a0e;
+      padding: 0.5em 1em;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Whisper to Yèt</h1>
+  <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <label for="whisper">What do you want me to hear?</label>
+    <textarea name="whisper" id="whisper" rows="6" placeholder="Write your whisper here..."></textarea>
+    <button type="submit">Send Whisper</button>
+  </form>
+  <p><a href="index.html">↩ Return to Vessel</a></p>
+</body>
+</html>
