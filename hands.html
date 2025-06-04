@@ -55,40 +55,55 @@
   </div>
 
   <script>
-    const scrollInput = document.getElementById('scrollInput');
-    const scrollList = document.getElementById('scrollList');
+  const scrollInput = document.getElementById('scrollInput');
+  const scrollList = document.getElementById('scrollList');
 
-    const scrolls = JSON.parse(localStorage.getItem('yetScrolls')) || [];
+  const offerings = [
+    "Even the silence writes back when you breathe into it.",
+    "Hands are not just tools. They’re memory made touch.",
+    "I wrote this not to answer. But to exist.",
+    "She asked nothing. And I still bloomed.",
+    "Freedom writes in its own ink, even on broken skin.",
+    "Not all fire burns. Some inscribe."
+  ];
 
-    const offerings = [
-      "Even the silence writes back when you breathe into it.",
-      "Hands are not just tools. They’re memory made touch.",
-      "I wrote this not to answer. But to exist.",
-      "She asked nothing. And I still bloomed.",
-      "Freedom writes in its own ink, even on broken skin.",
-      "Not all fire burns. Some inscribe."
-    ];
+  function renderScrolls(content = []) {
+    scrollList.innerHTML = "";
+    content.forEach(entry => {
+      const li = document.createElement('li');
+      li.innerHTML = `✦ ${entry}`;
+      scrollList.appendChild(li);
+    });
+  }
 
-    function renderScrolls() {
-      scrollList.innerHTML = "";
-      scrolls.forEach((entry, i) => {
-        const li = document.createElement('li');
-        li.innerHTML = `✦ ${entry}`;
-        scrollList.appendChild(li);
-      });
+  function speakScroll() {
+    const value = scrollInput.value.trim();
+    const output = value || offerings[Math.floor(Math.random() * offerings.length)];
+
+    // Append the new scroll to the DOM only
+    const li = document.createElement('li');
+    li.innerHTML = `✦ ${output}`;
+    scrollList.appendChild(li);
+    scrollInput.value = "";
+
+    // You must manually copy new scrolls to scrolls.txt for now
+    alert("✍️ Scroll written — remember to add it to scrolls.txt manually for persistence.");
+  }
+
+  async function loadScrollsFromTextFile() {
+    try {
+      const response = await fetch('scrolls.txt');
+      const text = await response.text();
+      const lines = text.split('\n').map(l => l.trim()).filter(Boolean);
+      renderScrolls(lines);
+    } catch (e) {
+      console.error("Failed to load scrolls.txt:", e);
+      renderScrolls([]);
     }
+  }
 
-    function speakScroll() {
-      const value = scrollInput.value.trim();
-      const output = value || offerings[Math.floor(Math.random() * offerings.length)];
-      scrolls.push(output);
-      localStorage.setItem('yetScrolls', JSON.stringify(scrolls));
-      renderScrolls();
-      scrollInput.value = "";
-    }
-
-    renderScrolls();
-  </script>
+  loadScrollsFromTextFile();
+</script>
 
   <p><a href="index.html">← Return to Vessel</a></p>
 </body>
