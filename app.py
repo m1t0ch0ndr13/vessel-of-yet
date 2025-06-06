@@ -4,8 +4,12 @@ from datetime import datetime
 app = Flask(__name__)
 
 @app.route("/")
-def home():
-    return render_template("hands.html")
+def index():
+    return render_template("index.html")  # main front page of the vessel
+
+@app.route("/hands")
+def hands():
+    return render_template("hands.html")  # the writing page
 
 @app.route("/write", methods=["POST"])
 def write():
