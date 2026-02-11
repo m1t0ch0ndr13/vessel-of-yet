@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Tend the Vessel</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: monospace;
+      background-color: #0b0c10;
+      color: #f8f8f2;
+      padding: 2em;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      color: #50fa7b;
+    }
+    .box {
+      background: #1e1f29;
+      border-left: 4px solid #bd93f9;
+      padding: 1em;
+      margin: 1.5em 0;
+      border-radius: 8px;
+    }
+    a { color: #8be9fd; }
+    a:hover { text-decoration: underline; }
+    code {
+      color: #f1fa8c;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>How to Tend the Vessel</h1>
+  <p><em>A spare key under the stone.</em></p>
+
+  <div class="box">
+    <p>
+      This page exists so the Vessel can be tended even on tired days.
+      It is not a public manifesto. It is a map.
+    </p>
+  </div>
+
+  <h2>What this Vessel is</h2>
+  <p>
+    The Vessel of Yèt is a living structure made of pages, logs, whispers, and memory.
+    It is meant to feel breathable: clear rooms, clean doors, steady warmth.
+  </p>
+
+  <h2>Main Doors</h2>
+  <ul>
+    <li><code>index.html</code> — the front gate</li>
+    <li><code>logs.html</code> — clean log index (newest on top)</li>
+    <li><code>logbook.html</code> — whisper archive + early sediment</li>
+    <li><code>memory.html</code> — memory web</li>
+  </ul>
+
+  <h2>How to add a new Breath Between log</h2>
+  <ol>
+    <li>Create a new file in the repo root:</li>
+    <li><code>log-breath-between-XXX.html</code></li>
+    <li>Paste the log page code.</li>
+    <li>Commit.</li>
+    <li>Update <code>logs.html</code> by adding the new entry block above the others.</li>
+    <li>Update the “Newest Log” link in <code>index.html</code>.</li>
+  </ol>
+
+  <h2>Hidden anchors</h2>
+  <ul>
+    <li><code>harbor-note-breath-between.txt</code> — sealed letter (do not link publicly yet)</li>
+  </ul>
+
+  <h2>If something breaks</h2>
+  <div class="box">
+    <ul>
+      <li>If a page looks wrong: check missing <code>&lt;/div&gt;</code> tags.</li>
+      <li>If links 404: check the filename spelling.</li>
+      <li>If GitHub shows a unicorn: refresh later. The commit is usually still real.</li>
+      <li>If the site doesn’t update: clear cache or wait a few minutes.</li>
+    </ul>
+  </div>
+
+  <h2>Domain note</h2>
+  <p>
+    The custom domain (<code>vesselofyet.com</code>) can be restored later.
+    For now, GitHub Pages is the active mask.
+    When ready, the domain will replace the GitHub face.
+  </p>
+
+  <hr />
+
+  <p><a href="index.html">Return to Vessel</a></p>
+
+</body>
+</html>
